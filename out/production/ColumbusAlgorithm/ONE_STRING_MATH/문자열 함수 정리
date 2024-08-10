@@ -1,0 +1,335 @@
+문자열 함수 정리
+
+1.문자열 인덱싱
+charAt(int index)
+문자열에서 특정 위치의 문자를 가져온다.
+
+String str = "Hello, World!";
+char ch = str.charAt(0); // 'H'
+System.out.println("첫 번째 문자: " + ch);
+
+ch = str.charAt(7); // 'W'
+System.out.println("여덟 번째 문자: " + ch);
+
+ch = str.charAt(200); // 에러 발생
+
+2.문자열 슬라이싱
+substring(start,end)
+start 부터 end전까지 (end-1)까지의 문자열을 리턴한다.
+
+substring(start)
+start 부터 끝까지 리턴한다.
+
+String str = "Hello, World!";
+
+String substr1 = str.substring(7); // "World!"
+System.out.println("7번 인덱스부터 끝까지: " + substr1);
+
+String substr2 = str.substring(0, 5); // "Hello"
+System.out.println("0번 인덱스부터 5번 인덱스 전까지: " + substr2);
+
+3.특정 문자가 있는지 확인
+
+3-1.contains(CharSequence) -> boolean
+
+String str = "Hello, World!";
+
+boolean contains = str.contains("World"); // true
+System.out.println("문자열에 'World'가 포함되어 있는가? " + contains);
+
+@@형 변환을 통해 특정 문자가 있는지 판별할 수 있다.
+@@CharSequence를 인자로 받기 때문에 , char타입으로 대체 불가하다.
+위의 경우에는 아래와 같이 형변환을 통해 contains 메서드를 사용해야함
+
+boolean containsChar = str.contains(Character.toString('W')); // true
+System.out.println("문자열에 'W'가 포함되어 있는가? " + containsChar);
+
+
+3-2.indexOf -> 그 위치 / -1
+
+String str = "Hello, World!";
+int index = str.indexOf('W'); // 7
+
+if (index != -1) {
+    System.out.println("문자열에 'W'가 포함되어 있으며, 위치는: " + index);
+} else {
+    System.out.println("문자열에 'W'가 포함되어 있지 않습니다.");
+}
+
+
+3-3.matches -> 정규 표현식
+String str = "Hello, World!";
+boolean matches = str.matches(".*World.*"); // true
+System.out.println("문자열에 'World'가 포함되어 있는가? " + matches);
+
+
+4.문자열이 같은지 비교
+4-1.equals 메서드를 사용해야함 ( == 는 객체 비교)
+
+String str1 = "Hello";
+String str2 = "Hello";
+String str3 = new String("Hello");
+
+System.out.println("str1.equals(str2): " + str1.equals(str2)); // true
+System.out.println("str1.equals(str3): " + str1.equals(str3)); // true
+
+4-2.equalsIgnoreCase ,  대소문자를 무시하고 두 문자열의 내용을 비교
+
+String str1 = "Hello";
+String str2 = "hello";
+
+System.out.println("str1.equalsIgnoreCase(str2): " + str1.equalsIgnoreCase(str2)); // true
+
+4-3.compareTo 메서드 사용
+문자열을 사전순으로 비교한다. , 정수값 리턴
+
+0 -> 두 문자열이 같다.
+음수 -> 호출하는 문자열이 사전순으로 앞에 있다.
+양수 -> 호출하는 문자열이 사전순으로 뒤에 있다.
+
+
+String str1 = "Hello";
+String str2 = "World";
+System.out.println("str1.compareTo(str2): " + str1.compareTo(str2)); // 음수 (str1이 앞에 있음)
+
+5.문자열의 길이 반환
+String 클래스의 length()메서드
+
+String str1 = "Hello";
+String str2 = "안녕하세요";
+
+// 문자열의 길이 반환
+int length1 = str1.length();
+int length2 = str2.length();
+
+System.out.println("str1의 길이: " + length1); // 5
+System.out.println("str2의 길이: " + length2); // 5
+
+
+6.특정 문자의 인덱스 값 찾기
+
+indexOf() 사용
+위에서 설명하였지만 조금 더 디테일하게 알아보자
+
+6-1.indexOf(int ch):
+특정 문자의 첫 번째 발생 위치를 반환합니다.
+ch는 문자로 해석되지만, 정수(int) 타입으로 받습니다. 이는 유니코드 값을 받을 수 있도록 하기 위함입니다.
+
+6-2.indexOf(int ch, int fromIndex):
+지정된 인덱스 이후로 검색을 시작하여 특정 문자의 첫 번째 발생 위치를 반환합니다.
+
+6-3.indexOf(String str):
+특정 문자열의 첫 번째 발생 위치를 반환합니다.
+
+6-4.indexOf(String str, int fromIndex):
+지정된 인덱스 이후로 검색을 시작하여 특정 문자열의 첫 번째 발생 위치를 반환합니다.
+
+String str = "Hello, World!";
+
+// 'o' 문자의 첫 번째 발생 인덱스 찾기
+int index1 = str.indexOf('o');
+System.out.println("'o'의 첫 번째 발생 인덱스: " + index1); // 4
+
+// 5번 인덱스 이후의 'o' 문자의 발생 인덱스 찾기
+int index2 = str.indexOf('o', 5);
+System.out.println("5번 인덱스 이후 'o'의 발생 인덱스: " + index2); // 8
+
+// "World" 문자열의 첫 번째 발생 인덱스 찾기
+int index3 = str.indexOf("World");
+System.out.println("'World'의 첫 번째 발생 인덱스: " + index3); // 7
+
+// 5번 인덱스 이후의 "World" 문자열의 발생 인덱스 찾기
+int index4 = str.indexOf("World", 5);
+System.out.println("5번 인덱스 이후 'World'의 발생 인덱스: " + index4); // 7
+
+// "Java" 문자열의 발생 인덱스 찾기 (존재하지 않음)
+int index5 = str.indexOf("Java");
+System.out.println("'Java'의 발생 인덱스: " + index5); // -1
+
+
+7. 문자열을 구분자 기준으로 나누고 합치기
+
+7-1.split(구분자) -> 배열 리턴 주의
+
+String str = "apple,banana,cherry,date";
+
+// 구분자 ','로 문자열 나누기
+String[] fruits = str.split(",");
+
+// 결과 출력
+for (String fruit : fruits) {
+    System.out.println(fruit); //
+}
+
+// 출력 결과
+apple
+banana
+cherry
+date
+
+7-2. join() , 문자열 배열 -> 문자열
+
+String[] fruits = {"apple", "banana", "cherry", "date"};
+
+// 구분자 ','로 문자열 합치기
+String result = String.join(",", fruits);
+
+// 결과 출력
+System.out.println(result); // apple,banana,cherry,date
+
+7-3. StringBuilder 사용 , 문자열 배열 -> 문자열
+
+String[] fruits = {"apple", "banana", "cherry", "date"};
+
+// StringBuilder를 사용하여 문자열 합치기
+StringBuilder sb = new StringBuilder();
+
+for (int i = 0; i < fruits.length; i++) {
+    sb.append(fruits[i]);
+    if (i < fruits.length - 1) {
+        sb.append(",");
+    }
+}
+
+String result = sb.toString();
+
+// 결과 출력
+System.out.println(result); // apple,banana,cherry,date
+
+
+8.기존 값을 다른 값으로 치환
+String.replace()
+문자 , 문자열 모두 인수로 사용 가능하다.
+
+replace(char oldChar, char newChar): 문자열 내의 특정 문자를 다른 문자로 치환합니다.
+
+String original = "Hello, World!";
+
+// 문자 'o'를 '0'으로 치환
+String result = original.replace('o', '0');
+
+// 결과 출력
+System.out.println(result); // Hell0, W0rld!
+
+replace(CharSequence target, CharSequence replacement): 문자열 내의 특정 문자열을 다른 문자열로 치환합니다.
+String original = "Hello, World!";
+
+// 문자열 "World"를 "Java"로 치환
+String result = original.replace("World", "Java");
+
+// 결과 출력
+System.out.println(result); // Hello, Java!
+
+**** 참고
+1.replaceAll() -> 정규표현식으로 모든 일치항목 문자열 치환
+String original = "Hello, 123 World 456!";
+
+// 숫자를 모두 '*'로 치환
+String result = original.replaceAll("\\d+", "*");
+
+// 결과 출력
+System.out.println(result); // Hello, * World *!
+
+2.replaceFirst() -> 정규표현식으로 첫 번째 일치 항목만 치환
+String original = "Hello, 123 World 456!";
+
+// 첫 번째 숫자를 '*'로 치환
+String result = original.replaceFirst("\\d+", "*");
+
+// 결과 출력
+System.out.println(result); // Hello, * World 456!
+
+9.문자열의 양쪽 끝에서 특정 문자 , 공백 제거
+
+9-1.trim()
+문자열의 양쪽 끝에서 공백을 제거
+공백 문자 (스페이스 , 탭등)를 제거
+공백 이외의 문자는 제거하지 않는다.
+
+String str = "   Hello, World!   ";
+
+// 양쪽 끝의 공백 제거
+String trimmed = str.trim();
+
+System.out.println("[" + trimmed + "]"); // [Hello, World!]
+
+9-2.strip()
+trim + 유니코드 공백문자 까지 처리한다.
+String str = "   Hello, World! \u2003";
+
+// 양쪽 끝의 공백 문자 제거 (Unicode 공백 포함)
+String stripped = str.strip();
+
+System.out.println("[" + stripped + "]"); // [Hello, World!]
+
+9-3.stripLeading() & stripTrailing()
+stripLeading(): 문자열의 왼쪽 끝에서 공백 문자를 제거합니다.
+stripTrailing(): 문자열의 오른쪽 끝에서 공백 문자를 제거합니다.
+
+// 왼쪽 끝의 공백 문자 제거
+String leftStripped = str.stripLeading();
+System.out.println("[" + leftStripped + "]"); // [Hello, World!   ]
+
+// 오른쪽 끝의 공백 문자 제거
+String rightStripped = str.stripTrailing();
+System.out.println("[" + rightStripped + "]"); // [   Hello, World!]
+
+// 양쪽 끝의 공백 문자 제거
+String fullyStripped = str.strip();
+System.out.println("[" + fullyStripped + "]"); // [Hello, World!]
+
+
+10.아스키 코드 변환
+문자 -> 아스키코드 로 변환하려면 int로 캐스팅하면 된다.
+
+char ch = 'A';
+
+// 문자 'A'를 아스키 코드로 변환
+int asciiCode = (int) ch;
+
+System.out.println("문자 '" + ch + "'의 아스키 코드: " + asciiCode); // 65
+
+11.대소 비교
+
+11-1.문자 간의 대소비교 -> 비교 연산자 사용 가능
+자바에서 문자는 유니코드 값으로 비교된다.
+
+char ch1 = 'A';
+char ch2 = 'B';
+
+// 문자 대소 비교
+if (ch1 < ch2) {
+System.out.println("'" + ch1 + "'는 '" + ch2 + "'보다 작습니다.");
+} else if (ch1 > ch2) {
+System.out.println("'" + ch1 + "'는 '" + ch2 + "'보다 큽니다.");
+} else {
+System.out.println("'" + ch1 + "'와 '" + ch2 + "'는 같습니다.");
+}
+
+// 출력 결과
+'A' 는 'B'보다 작습니다.
+
+
+11-2.문자열 간의 대소비교 -> compareTo
+
+같으면 -> 0
+첫 번째 문자열이 사전 순으로 빠르면 -> 음수
+첫 번째 문자열이 사전 순으로 느리면 -> 양수
+
+String str1 = "apple";
+String str2 = "banana";
+
+// 문자열 대소 비교
+int result = str1.compareTo(str2);
+
+if (result < 0) {
+    System.out.println("\"" + str1 + "\"는 \"" + str2 + "\"보다 작습니다.");
+} else if (result > 0) {
+    System.out.println("\"" + str1 + "\"는 \"" + str2 + "\"보다 큽니다.");
+} else {
+    System.out.println("\"" + str1 + "\"와 \"" + str2 + "\"는 같습니다.");
+}
+
+// 출력 결과
+
+"apple"는 "banana"보다 작습니다.
