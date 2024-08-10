@@ -7,6 +7,12 @@ import java.util.Arrays;
 
 // 시간초과 난 코드
 public class SOL_20291_STRING_TIME_ERROR {
+
+    // 시간 제한을 제대로 확인하지 않고 2중 for문으로 구현
+    // 시간 제한 3초 , 파일의 개수가 최대 50000개 까지 있음으로 o(n^2)로 구현하는것은 비효율적
+
+    // 아래는 2중 for문으로 정렬한 후 (알파벳 순으로 자동 정렬되기 때문에)
+    // 중복 체크 후 출력
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();

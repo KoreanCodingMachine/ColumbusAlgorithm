@@ -6,6 +6,16 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class SOL_20291_3_STRING_TREEMAP {
+
+    // TreeMap
+    // Map 자료구조의 일종으로 , key값에 따라 자동으로 정렬되는 기준을 제공해준다.
+    // TreeMap는 레드 블랙 트리라는 균형 이진 탐색 트리 기반으로 동작한다.
+    // O(logn)
+
+    // 1.입력 받은 데이터를 key-value 형태의 Map으로 저장
+    // 2.Map으로 저장한 데이터를 정렬된 순서를 보장받기 위해 TreeMap에 저장
+    // 3.출력
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();
