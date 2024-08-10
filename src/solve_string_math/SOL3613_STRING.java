@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 
 
 public class SOL3613_STRING {
+
+    // 시간 제한 1초
+    // 문자열의 최대 길이 100
+    // 100 * 100 = 10000 , O(n^2) 알고리즘도 사용 가능
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();
@@ -17,11 +22,12 @@ public class SOL3613_STRING {
 
         // _ A
 
+        // case 분류하기
         // 1. 첫 문자가 대문자인 경우 Ab
-        // 2. 맨 처음에 _ 가 오는 경우
-        // 3. 맨 마지막에 _가 오는 경우
-        // 4. c++ case 에서 대문자가 오는 경우
-        // 5. 중간에 _ 가 연속으로 2개 이상 오는 경우
+        // 2. 맨 처음에 _ 가 오는 경우 _ab
+        // 3. 맨 마지막에 _가 오는 경우 ab_
+        // 4. c++ case 에서 대문자가 오는 경우 a_Aa
+        // 5. 중간에 _ 가 연속으로 2개 이상 오는 경우 a__b
 
 //        if (str.charAt(0) == Character.toUpperCase(str.charAt(0))) {
 //            System.out.println("Error!");
@@ -49,7 +55,7 @@ public class SOL3613_STRING {
 //
 //        }
 
-        // 코드 중복 제거
+        // 위 조건문 코드 중복 제거
 
         if (Character.isUpperCase(str.charAt(0)) || str.charAt(0) == '_' || str.charAt(str.length() - 1) == '_') {
             System.out.println("Error!");

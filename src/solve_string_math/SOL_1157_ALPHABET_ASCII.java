@@ -3,7 +3,17 @@ package solve_string_math;
 
 import java.io.*;
 
-public class SOL_9064_ALPHABET_ASCII {
+public class SOL_1157_ALPHABET_ASCII {
+
+    // 첫째 줄에 알파벳 대소문자로 이루어진 단어가 주어진다.
+    // 주어지는 단어의 길이는 1,000,000을 넘지 않는다.
+    // 시간 제한 -> 2초
+
+    // 시간 복잡도 -> O(n^2)는 불가능
+
+    // 테스트 케이스가 최대 몇 회 까지 있다는 말이 문제에 명시되어 있지 않은걸로 보아서
+    // 시간 복잡도에 크게 고려하지 않아도 될것 같음
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 

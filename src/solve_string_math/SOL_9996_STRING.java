@@ -5,6 +5,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class SOL_9996_STRING {
+
+    // 문자열의 최대 길이 100 , 제한시간 1초
+    // 시간 복잡도 크게 고려 x
+
+    // 이 문제는 반례를 찾는게 중요한문제였음
+    // 특정 문자열이 특정 패턴에 맞는지 찾는 문제
+
+    // 만약 특정 문자열을 분리한후 해당 패턴으로 시작 , 종료하는지만 검증한다면
+    // 아래의 반례 케이스에서 걸릴것
+
+    // aaa*a
+    // aaa
+
+    // a*a
+    // a
+
+
+
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

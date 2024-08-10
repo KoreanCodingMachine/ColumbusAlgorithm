@@ -8,6 +8,15 @@ import java.util.StringTokenizer;
 
 public class SOL1929_Eratostenes {
     public static void main(String[] args) throws IOException {
+
+        // 에라토스테네스로 소수 판별 문제
+
+        // 1 ≤ M ≤ N ≤ 1,000,000 , 시간 제한 2초
+        // o (n^2) 연산 시 2초 초과
+        // 1초 -> 1억회 정도
+        // o (nlong) 이하의 알고리즘 사용 -> 에라토스테네스 or 제곱근 판별
+
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         String str = bufferedReader.readLine();
@@ -19,6 +28,8 @@ public class SOL1929_Eratostenes {
         sieve(a,b);
 
     }
+
+    // 제곱근으로 판별
     public static boolean isPrime(int n) {
         if (n == 1) {
             return false;
@@ -33,6 +44,7 @@ public class SOL1929_Eratostenes {
         return true;
     }
 
+    // 에라토스테네스 방식
     public static void sieve(int a, int limit) {
         boolean isPrime[] = new boolean[limit+1];
 

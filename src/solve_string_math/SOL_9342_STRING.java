@@ -6,6 +6,13 @@ import java.io.InputStreamReader;
 
 
 public class SOL_9342_STRING {
+
+    // 시간 제한 2초
+    // 첫째 줄에 테스트 케이스의 개수 T ≤ 20 이 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있으며,
+    // 최대 200개의 알파벳 대문자로 이루어진 문자열이 주어진다.
+
+    // O(N^2) 연산으로도 해결 가능
+
     public static void main(String[] args) throws IOException {
         // {A,B,C,D,E,F} 중 0개 또는 1개로 시작한다.
         // A가 하나 또는 그 이상 있어야 한다.

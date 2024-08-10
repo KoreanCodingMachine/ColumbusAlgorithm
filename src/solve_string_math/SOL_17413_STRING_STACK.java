@@ -6,6 +6,18 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 
 public class SOL_17413_STRING_STACK {
+
+    // 시간 제한 1초 , 문자열 최대 길이 100000 -> O(n^2) 연산으로 해결 불가
+
+    // 스택 자료구조를 활용해 태그가 아닌 문자열을 공백을 기준으로
+    // 스택에 push
+    // 공백을 만나거나 || 태그를 만나면 pop
+    // 자동으로 뒤집어진 문자열 반환
+
+    // 공백 x , 태그 x
+    // 스택을 pop할 조건이 없음으로 , 출력 전 최종 스택이 비어있는지 확인
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();

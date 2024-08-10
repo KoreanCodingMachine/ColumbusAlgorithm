@@ -5,6 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class SOL_2941_ALPHABET {
+
+    // 첫째 줄에 최대 100글자의 단어가 주어진다. 알파벳 소문자와 '-', '='로만 이루어져 있다.
+    // 단어는 크로아티아 알파벳으로 이루어져 있다.
+    // 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다.
+
+    // 시간 제한 1초
+
+    // O(n^2)로도 해결 가능
+
+    // 특정 알고리즘은 필요 없고 , 문제 조건에 맞게 케이스를 분류해야함
+
+    // 주의할 점은 , 인덱스 범위 오류에 유의
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder stringBuilder = new StringBuilder();
@@ -54,6 +68,8 @@ public class SOL_2941_ALPHABET {
                 }
 
                 if (i < str.length()-2) {
+                    // 'dz='는 총 3개의 크기를 잡아먹음
+                    // 만약 xxxxxdz 라면 , 인덱스 초과 오류 발생
                     if (str.charAt(i+1) == 'z') {
                         if (str.charAt(i+2) == '=') {
                             count++;
